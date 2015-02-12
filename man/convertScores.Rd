@@ -11,7 +11,7 @@ convertScores(scores = "show.cases", write_to = NULL, pv = 5,
 \arguments{
 \item{scores}{Character ze ścieżką do outputu z ConQuesta2 dla
 polecenia show.cases. Alternatywnie character z wynikiem działania funkcji
-\code{\link{readLines}} dla tego pliku.}
+\code{\link[base]{readLines}} dla tego pliku.}
 
 \item{write_to}{Character z nazwą (ścieżką) pliku wynikowego w formacie csv.
 Jeżeli NULL, zwraca data.frame z wynikiem.}
@@ -21,7 +21,7 @@ określenia długości tablicy z wynikami dla jednego ucznia w \code{scores}.}
 
 \item{dat_file}{Character ze ścieżką do pliku z danymi, z których ConQuest
 wygenerował output (opcjonalny). Alternatywnie character z wynikiem działania funkcji
-\code{\link{readLines}} dla tego pliku.}
+\code{\link[base]{readLines}} dla tego pliku.}
 
 \item{...}{Definicja pozycji kolumn w pliku dat_file, które mają być
  dodane do wyników (patrz sekcja Details).}
@@ -46,7 +46,9 @@ Dodatkowo umożliwia dołączenie kolumn (np. identyfikatorów) z pliku .dat,
 z którego wyliczone zostały wyniki w ConQueście.
 }
 \details{
-Funkcja wymaga pakietu plyr do działania.
+Funkcja wymaga pakietu
+\href{http://cran.r-project.org/web/packages/plyr/index.html}{plyr}
+do działania.
 
 Definicja pozycji kolumn powinna przyjmować następującą strukturę:
  \code{varName = c(n, k)}. \code{varName} określa nazwę pod jaką kolumna
