@@ -2,16 +2,16 @@
 
 Pakiet zbiera funkcje, które w międzyczasie napisałem, a które miałem okazję wykorzystać więcej niż jeden raz:).
 
-# Instalacja
+## Instalacja
 
-Żeby zainstalować pakiet z Githuba skopiuj poniższy skrypt
+Żeby zainstalować pakiet z Githuba, skopiuj i uruchom poniższy kod.
 
 ```r
 install.packages('devtools') # potrzebne gdy nie jest jeszcze zainstalowany
 devtools::install_github('mr-majkel/majkTools')
 ```
 
-# Załadowanie pakietu
+## Załadowanie pakietu
 
 Żeby dobrać się do tych wszystkich super funkcji w pakiecie, trzeba  go jeszcze załadować:).
 
