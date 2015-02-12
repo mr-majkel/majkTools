@@ -5,9 +5,9 @@ Version: 0.0.0.9000
 Date: 2015-02-11
 Authors@R: person("Michał", "Modzelewski", email = "michal.modzel@gmail.com",
                   role = c("aut", "cre"))
-Description: Pakiet zbiera funkcje, które w miedzyczasie napisałem, a które
+Description: Pakiet zbiera funkcje, które w międzyczasie napisałem, a które
     miałem okazję wykorzystać więcej niż jeden raz:). Póki co, znajduje się tu 
-    tylko funkcja wspomagające obróbkę danych z ConQuesta2, ale pojawią też
+    tylko funkcja wspomagająca obróbkę danych z ConQuesta2, ale pojawią się też
     inne...
 Imports:
     plyr (>= 1.8.1) 
