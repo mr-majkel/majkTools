@@ -48,7 +48,7 @@
 #' kolejności w jakiej zostały zdefiniowane.
 #' 
 #' @encoding UTF-8
-#' 
+#' @export
 convertScores = function(scores = "show.cases", write_to = NULL, pv = 5,
                   dat_file = NULL, ...) {
   

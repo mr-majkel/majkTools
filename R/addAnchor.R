@@ -1,5 +1,9 @@
 #' Dodaje kolumny grupujące wartości dla zadań kotwiczących.
 #' 
+#' @description
+#' Dodaje do zbioru danych kolumny, w których gromadzi wartości dla zadań
+#' kotwiczących zdefiniowanych w \code{anchor_mat}.
+#' 
 #' @param df data.frame, do którego dodane mają być kolumny.
 #' @param anchor_mat macierz wskazująca odpowiadające sobie zadania w
 #'  poszczególnych wersjach.
@@ -7,6 +11,8 @@
 #'  informacja o rozwiązywanej wersji testu. Alternatywnie wektor z taką
 #'  informacją (o długości równej liczbie wierszy w \code{df}). Domyślnie
 #'  "wersja".
+#'  
+#' @export
 #'  
 addAnchor = function(df, anchor_mat, test_ver = "wersja") {
   # wersje testu

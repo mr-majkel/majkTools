@@ -8,7 +8,9 @@
 #' @param missing_code kod brakującej odpowiedzi. Domyślnie 9 (integer).
 #' @param replace_with kod, który ma być wprowadzony, gdy odpowiedź zostanie
 #'  określona jako not-reached. Domyślnie "N".
-#'  
+#'
+#' @export
+#'    
 showNotReached = function(dataframe, tasks = NULL, missing_code = 9,
                           replace_with = "N") {
   # tworzy kopię zbioru danych
