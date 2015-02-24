@@ -16,8 +16,8 @@ Lista z nazwami odpowiadającymi zadaniom, której elementami są data.frame'y
 z kolumnami "values" i "recode" z klucza.
 }
 \description{
-Wczytuje klucz zapisany w pliku tekstowym za pomocą funkcji
-\code{\link[utils]{read.csv2}}.
+Wczytuje  za pomocą funkcji \code{\link[utils]{read.csv2}}
+klucz zapisany w pliku tekstowym.
 
 W pliku, nazwy zadań powinny byc zdefiniowane w kolumnie 'item' i być
 powtórzone tyle razy, ile wartości zdefiniowano dla danego zadania do

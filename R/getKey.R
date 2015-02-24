@@ -1,11 +1,15 @@
 #' Generuje z codebooka klucz wartości potrzebnych do rekodowania.
+#' 
+#' @description Generuje z codebooka klucz wartości potrzebnych do rekodowania. Domyślnie
+#' wszystkie wartości, poza tymi określonymi w \code{default_key}, są rekodowane
+#' na 0.
 #'  
 #' @param cdbook data.frame z codebookiem z weryfikatora. 
 #' @param vars string z wyrażeniem regularnym lub wektor tekstowy z nazwami
 #'  kolumn z zadaniami.
 #' @param default_key wektor tekstowy określający wartości w bazie do zrekodowania,
-#'  które mają nie być rekodowane na 0 (zostana pozostawione). Dotyczy tylko
-#'  zadań nie określonych jako zamknięte w \code{mcq_val} (patrz Details).
+#'  które mają nie być rekodowane na 0 (zostaną pozostawione bez zmian).
+#'  Dotyczy tylko zadań nie określonych jako zamknięte (patrz Details).
 #'  Domyślnie \code{c("1", "2")}.
 #' @param mcq_key wektor określający wartości dla zadań zamkniętych, którym po 
 #'  zrekodowaniu przypisać wartość 1, a nie 0. Liczba kodów musi
@@ -17,25 +21,18 @@
 #'  \code{vars}.
 #' 
 #' @return
-#' Lista o następujących elementach:
-#' items     wektor tekstowy z nazwami zmiennych pasujących do 'vars'.
-#' values    lista wartości zdefiniowanych dla 'items'.
-#' recodes   lista wartości, na które mają być zrekodowane 'values'.
-#' open      wektor tekstowy z nazwami zmiennych określonych jako otwarte
-#'           (tj. nie-zamknięte).
-#' mcq       wektor tekstowy z nazwami zmiennych określonych jako zamknięte.
-#' open_key  wykorzystany 'open_key'.
-#' mcq_key   wykorzystany 'mcq_key' (o ile został podany).
+#' Lista z nazwami odpowiadającymi zadaniom, której elementami są data.frame'y
+#' z kolumnami "values" i "recode" z klucza.
 #' 
 #' @details
 #' Ważne, żeby nazwy zmiennych w \code{cdbook} były zdefiniowane w kolumnie
 #' 'Nazwa( zmiennej)', a etykiety wartości w kolumnie 'Etykiety( wartości)'.
 #' Część nie w nawiasie stanowi zapytanie odnajdujące odpowiednie kolumny.
 #' Wyrażenia 'Nazwa' oraz 'Etykiety' muszą więc identyfikować dokładnie po
-#' jednej zmiennej (patrz reformat()).
+#' jednej zmiennej.
 #' 
-#' Zakłada się, że wartości są oddzielone od swoich etykiet za pomocą
-#' dwukropka ':', bez spacji po obu stronach.
+#' Zakłada się, że wartości są oddzielone od swoich etykiet wyłącznie za pomocą
+#' dwukropka \code{:} (tj. bez spacji po obu stronach).
 #' 
 #' Jeżeli \code{mcq_key} nie jest \code{NULL}, to w trakcie generowania klucza
 #' zakłada się, że zmienne, które posiadają etykietę dla wartości określonej w
