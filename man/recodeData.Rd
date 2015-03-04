@@ -27,7 +27,6 @@ z kolumnami o nazwach 'value' (wartości wyjściowe) i 'recode'
 }
 \details{
 Podczas wyszukiwania i nadpisywania wartości z klucza usuwa spacje z początku
-i końca w przeszukiwanej kolumnie oraz z wartości wyjściowych i wartości
-docelowych.
+i końca w przeszukiwanej kolumnie oraz z wartości wyjściowych.
 }
 

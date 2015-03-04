@@ -19,8 +19,7 @@
 #' 
 #' @details
 #' Podczas wyszukiwania i nadpisywania wartości z klucza usuwa spacje z początku
-#' i końca w przeszukiwanej kolumnie oraz z wartości wyjściowych i wartości
-#' docelowych.
+#' i końca w przeszukiwanej kolumnie oraz z wartości wyjściowych.
 #' 
 #' @export
 #' 
@@ -34,7 +33,7 @@ recodeData = function(raw_df, key_list) {
     it_recodes = key_list[[it]]$recode
     # pozbywa się spacji na początku i końcu
     it_vals = gsub("^ *| *$", "", it_vals)
-    it_recodes = gsub("^ *| *$", "", it_recodes)                
+    # it_recodes = gsub("^ *| *$", "", it_recodes)                
     for (v in it_vals) {
       dat_vec = gsub("^ *| *$", "", raw_df[, it]) # bez spacji na początku i końcu
       recode_ind = which(dat_vec == v)
