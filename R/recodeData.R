@@ -17,22 +17,29 @@
 #' na wartości z kolumny 'recode'. Kolumny nie wymienione w \code{key_list} są
 #' zwracane bez zmian.
 #' 
+#' @details
+#' Podczas wyszukiwania i nadpisywania wartości z klucza usuwa spacje z początku
+#' i końca w przeszukiwanej kolumnie oraz z wartości wyjściowych i wartości
+#' docelowych.
+#' 
 #' @export
 #' 
 
 recodeData = function(raw_df, key_list) {
-    recoded_df = raw_df
-    items = names(key_list)
-    
-    for(it in items) {
-        it_vals = key_list[[it]]$value
-        it_recodes = key_list[[it]]$recode
-        for (v in it_vals) {
-            recode_ind = which(raw_df[, it] == v)
-            recoded_df[recode_ind, it] = it_recodes[which(it_vals == v)]
-        }
+  recoded_df = raw_df
+  items = names(key_list)
+  
+  for(it in items) {
+    it_vals = key_list[[it]]$value
+    it_recodes = key_list[[it]]$recode
+    # pozbywa się spacji na początku i końcu
+    it_vals = gsub("^ *| *$", "", it_vals)
+    it_recodes = gsub("^ *| *$", "", it_recodes)                
+    for (v in it_vals) {
+      dat_vec = gsub("^ *| *$", "", raw_df[, it]) # bez spacji na początku i końcu
+      recode_ind = which(dat_vec == v)
+      recoded_df[recode_ind, it] = it_recodes[which(it_vals == v)]
     }
-    # recoded_df[, items] = data.frame(recoded_df[, items],
-    #                                  stringsAsFactors = FALSE)
-    recoded_df
+  }
+  recoded_df
 }
