@@ -17,6 +17,10 @@
 #' na wartości z kolumny 'recode'. Kolumny nie wymienione w \code{key_list} są
 #' zwracane bez zmian.
 #' 
+#' Funkcja zwraca kolumnę o klasie odpowiadającej klasie
+#' kolumny 'recode' w kluczu (obsługuje cztery klasy kolumn: character, numeric,
+#' integer i logical).
+#' 
 #' @details
 #' Podczas wyszukiwania i nadpisywania wartości z klucza usuwa spacje z początku
 #' i końca w przeszukiwanej kolumnie oraz z wartości wyjściowych.
@@ -31,6 +35,7 @@ recodeData = function(raw_df, key_list) {
   for(it in items) {
     it_vals = key_list[[it]]$value
     it_recodes = key_list[[it]]$recode
+    recode_type = typeof(it_recodes)
     # pozbywa się spacji na początku i końcu
     it_vals = gsub("^ *| *$", "", it_vals)
     # it_recodes = gsub("^ *| *$", "", it_recodes)                
@@ -39,6 +44,13 @@ recodeData = function(raw_df, key_list) {
       recode_ind = which(dat_vec == v)
       recoded_df[recode_ind, it] = it_recodes[which(it_vals == v)]
     }
+    # zwróć pożądaną klasę
+    recoded_df[, it] = switch(recode_type,
+                              character = as.character(recoded_df[, it]),
+                              double = as.numeric(recoded_df[, it]),
+                              integer = as.integer(recoded_df[, it]),
+                              logical = as.logical(recoded_df[, it]),
+                              ... = recoded_df[, it])
   }
   recoded_df
 }

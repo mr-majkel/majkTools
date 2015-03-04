@@ -16,6 +16,10 @@ Data.frame, w którym dla kolumn wymienionymi w
 \code{key_list} odpowiednie wartości w kolumnie 'value' zostały podmienione
 na wartości z kolumny 'recode'. Kolumny nie wymienione w \code{key_list} są
 zwracane bez zmian.
+
+Funkcja zwraca kolumnę o klasie odpowiadającej klasie
+kolumny 'recode' w kluczu (obsługuje cztery klasy kolumn: character, numeric,
+integer i logical).
 }
 \description{
 Rekoduje zbiór danych zgodnie z kluczem. Klucz powinien być nazwaną listą.
