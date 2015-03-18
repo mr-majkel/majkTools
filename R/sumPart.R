@@ -3,18 +3,37 @@
 #' @description Dzieli pliki z summary dla modeli z TAM na części i wyrzuca do
 #' konsoli wybrane części.
 #' 
-#' @param sum_file character określający lokalizację pliku z \code{summary}.
+#' @param sum_file character określający lokalizację pliku z \code{summary},
+#'  character z wczytanym plikiem (np. za pomocą \code{\link[base]{readLines}}) lub
+#'  bezpośrednie wywołanie \code{\link[TAM:summary.tam.mml]{summary}} na obiekcie klasy
+#'  \code{tam.mml}.
 #' @param chunk integer z określeniem, które części zwrócić lub "all"
 #'  (domyślnie), żeby zwrócić wszystkie.
 #' @param sep character z określeniem separatora. Jeżeli określono kilka
-#'  separatorów, dzieli plik po nich wszystkich. Domyślnie "---".
+#'  separatorów, dzieli plik po nich wszystkich. Domyślnie "---" (używany w
+#'  podsumowaniu modeli w pakiecie \code{TAM}).
+#' 
+#' @examples
+#' \dontrun{
+#' # Wywołanie sumPart na pliku, wszystkie części
+#' sumPart("plik_z_summary.txt")
+#' # Wywołanie sumPart na obiekcie z wczytanym wcześniej plikiem, 2. część
+#' plik_sum = readLines("plik_z_summary.txt")
+#' sumPart(plik_sum, 2)
+#' # Wywołanie sumPart bezpośrednio na summary(), od 1. do 4. części
+#' sumPart(summary(model_z_tam), 1:4)}
 #' 
 #' @export
 #' 
 sumPart = function(sum_file, chunk = "all", sep = "---") {
-  # wczytaj kolejne linie z pliku
-  x = readLines(con = sum_file)
-  
+  # określenie typu sum_file
+  f_call = match.call()[["sum_file"]]
+  if(typeof(f_call) != "character") {
+    x = capture.output(print(sum_file))
+  } else {
+    x = readLines(con = sum_file)
+  }  
+
   # podziel plik na części
   if (length(sep) > 1) {
     sep = paste(sep, collapse = "|")
