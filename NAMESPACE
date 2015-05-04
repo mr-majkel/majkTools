@@ -3,6 +3,8 @@
 export(addAnchor)
 export(convertScores)
 export(getKey)
+export(getProbIRT)
+export(plotICC)
 export(readKey)
 export(recodeData)
 export(showNotReached)
