@@ -64,7 +64,8 @@ plotICC = function(b = 0, a = 1, c = 0, d = 1, const = 1.7, theta = c(-3, 3),
 #' 
 getProbIRT = function(theta, b = 0, a = 1, c = 0, d = 1, const = 1.7,
                       logit = FALSE) {
-  prob = c + (d - c)/(1 + exp(-a * (theta - b)))
+  prob = c + ((d - c) * exp(const * a * (theta - b)))/
+                        (1 + exp(const * a * (theta - b)))
   
   if (logit) {
     logodds = log(prob/(1-prob))
