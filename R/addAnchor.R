@@ -27,7 +27,7 @@ addAnchor = function(df, anchor_mat, test_ver = "wersja") {
       vers = sort(unique(test_ver))
   } else if (length(test_ver) != nrow(df)) {
       stop("Wektor z określeniem wersji (test_var) ma inną długość niż ",
-           "liczba wierszy w zbiorze danych (odp. ", length(test_var),
+           "liczba wierszy w zbiorze danych (odp. ", length(test_ver),
            " i ", nrow(df), ")")
   }
 
