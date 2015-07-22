@@ -27,20 +27,20 @@ showNotReached = function(dataframe, tasks = NULL, missing_code = 9,
   n_miss = apply(df_tasks, 1, function(row) {
     i = 0
     while (i <= n_tasks) {
-      if (any(row[(n_tasks - i):n_tasks] == missing_code)) {
+      if (row[(n_tasks - i):(n_tasks - i)] == missing_code) {
         i = i + 1
         next
       } else {
         break
       }
-      i
     }
+    i
   })
   for (nn in unique(n_miss)) {
     if (nn <= 1) {
       next
     }
-    df_tasks[n_miss == nn, tasks[(n_tasks - nn + 1):n_tasks]] = replace_with 
+    df_tasks[n_miss == nn, tasks[(n_tasks - nn + 2):n_tasks]] = replace_with 
   }
   dataframe2[, tasks] = df_tasks
   dataframe2
