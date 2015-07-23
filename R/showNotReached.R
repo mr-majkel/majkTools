@@ -26,8 +26,8 @@ showNotReached = function(dataframe, tasks = NULL, missing_code = 9,
   
   n_miss = apply(df_tasks, 1, function(row) {
     i = 0
-    while (i <= n_tasks) {
-      if (row[(n_tasks - i):(n_tasks - i)] == missing_code) {
+    while (i < n_tasks) {
+      if (row[n_tasks - i] == missing_code) {
         i = i + 1
         next
       } else {
@@ -45,4 +45,3 @@ showNotReached = function(dataframe, tasks = NULL, missing_code = 9,
   dataframe2[, tasks] = df_tasks
   dataframe2
 }
-
