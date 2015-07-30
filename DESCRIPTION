@@ -1,8 +1,8 @@
 Package: majkTools
 Type: Package
 Title: Różniaste funkcje, które okazały się całkiem przydatne
-Version: 0.8.4
-Date: 2015-07-22
+Version: 0.9.0
+Date: 2015-07-30
 Authors@R: person("Michał", "Modzelewski", email = "michal.modzel@gmail.com",
                   role = c("aut", "cre"))
 Description: Pakiet zbiera funkcje, które w międzyczasie napisałem, a które
